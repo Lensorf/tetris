@@ -250,6 +250,7 @@ Piece.prototype.moveDown = function () {
     // Фиксируем фигуру на игровом поле и создаем новую случайную фигуру
     this.lock();
     p = randomPiece();
+    updateScore(); // Обновляем счет после приземления фигуры
   }
 }
 
@@ -331,9 +332,9 @@ Piece.prototype.lock = function () {
       for (c = 0; c < COL; c++) {
         board[0][c] = VACANT;
       }
+      addScore();
     }
   }
-
   // Отрисовываем обновленное игровое поле
   drawBoard();
 }
@@ -379,6 +380,23 @@ function CONTROL(event) {
     p.moveDown();
   }
 }
+
+
+function updateScore() {
+  document.getElementById('score').innerText = 'Score: ' + player.score;
+}
+
+function addScore() {
+  player.score += 10;
+  updateScore();
+}
+
+// Инициализация игрока
+const player = {
+  matrix: null,
+  pos: { x: 0, y: 0 },
+  score: 0,
+};
 
 // Устанавливаем функцию обратного вызова для автоматического движения вниз каждые 1000 миллисекунд:
 
