@@ -309,6 +309,7 @@ Piece.prototype.lock = function () {
         alert("Game Over");
         // Очищаем игровое поле при завершении игры
         board.forEach(row => row.fill(VACANT));
+        drawBoard(board);
       }
 
       board[this.y + r][this.x + c] = this.color;
