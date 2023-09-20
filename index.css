@@ -3,3 +3,7 @@ canvas {
   margin: 0 auto;
   display: block;
 }
+
+#score {
+  font-size: 24px;
+}
